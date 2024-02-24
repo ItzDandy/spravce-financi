@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Správce Financí</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Správce Financí</h1>
+
+        <!-- Přidáno přihlašovací okno -->
+        <div id="prihlaseni">
+            <label for="jmeno">Uživatelské jméno:</label>
+            <input type="text" id="jmeno" placeholder="Zadejte uživatelské jméno">
+
+            <label for="heslo">Heslo:</label>
+            <input type="password" id="heslo" placeholder="Zadejte heslo">
+
+            <button onclick="prihlasit()">Přihlásit se</button>
+        </div>
+        <!-- Konec přihlašovacího okna -->
+
+        <div id="zustatek">Zůstatek: <span id="zustatek-uctu">0</span></div>
+        <div id="input-sekce">
+          <label for="castka">Částka:</label>
+          <input type="number" id="castka" placeholder="Zadejte částku">
+
+          <label for="kategorie">Kategorie:</label>
+          <input type="text" id="kategorie" placeholder="Zadejte kategorii">
+
+          <label for="tipy">Typ:</label>
+          <select id="tipy">
+              <option value="Příjem">Příjem</option>
+              <option value="výdaj">Výdaj</option>
+          </select>
+
+          <button onclick="pridattransakci()">Přidat Transakci</button>
+      </div>
+
+      <div id="filtr-sekce">
+          <label for="filtr-kategorie">Filtrovat podle Kategorie:</label>
+          <select id="filtr-kategorie" onchange="filtrtransakce()">
+          </select>
+
+          <label for="filtrovat-castku">Filtrovat podle Částky:</label>
+          <input type="number" id="filtrovat-castku" placeholder="Zadejte částku" onchange="filtrtransakce()">
+      </div>
+
+
+      <div id="transakce">
+      </div>
+  </div>
+
+        
+
+    </div>
+
+    <div id="dph">
+      <label for="cenaBezDPH">Cena bez DPH:</label>
+      <input type="number" id="cenaBezDPH" placeholder="Zadejte cenu bez DPH">
+  
+      <label for="sazbaDPH">Sazba DPH:</label>
+      <select id="sazbaDPH">
+          <option value="0.21">21%</option>
+          <option value="0.15">15%</option>
+          <option value="0.10">10%</option>
+      </select>
+  
+      <button onclick="CenaDPH()">Vypočítat celkovou cenu s DPH</button>
+  
+      <p id="celkovaCena">Celková cena s DPH: </p>
+      <p id="rozdil">Rozdíl: </p>
+  </div>
+
+  <div id="mena">
+    <label for="zakladniMena">Základní měna:</label>
+    <select id="zakladniMena">
+        <option value="CZK">CZK</option>
+        <option value="EUR">EUR</option>
+    </select>
+
+    <label for="cilovaMena">Cílová měna:</label>
+    <select id="cilovaMena">
+        <option value="CZK">CZ</option>
+        <option value="EUR">EUR</option>
+    </select>
+
+    <label for="castkaKPrevodu">Částka k převodu:</label>
+    <input type="number" id="castkaKPrevodu" placeholder="Zadejte částku k převodu">
+
+    <button onclick="prevodMeny()">Převést měnu</button>
+
+    <p id="prevedenaCastka">Převedená částka: </p>
+</div>
+
+<div id="kalkulacka">
+  <h2>Kalkulačka spoření/investic</h2>
+  <label for="pocatecniCastka">Počáteční částka:</label>
+  <input type="number" id="pocatecniCastka" placeholder="Zadejte počáteční částku">
+
+  <label for="mesicniVklad">Měsíční vklad:</label>
+  <input type="number" id="mesicniVklad" placeholder="Zadejte měsíční vklad">
+
+  <label for="urokovaSazba">Roční úroková sazba (%):</label>
+  <input type="number" id="urokovaSazba" placeholder="Zadejte roční úrokovou sazbu">
+
+  <label for="dobaTrvani">Doba trvání spoření/investice (v letech):</label>
+  <input type="number" id="dobaTrvani" placeholder="Zadejte dobu trvání v letech">
+
+  <button onclick="Investicikalkulacka()">Spočítat</button>
+
+  <p id="budouciHodnota">Budoucí hodnota spoření/investice: </p>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
